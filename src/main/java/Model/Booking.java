@@ -15,19 +15,19 @@ public class Booking {
    private int customerID;
    private String room_code;
    private  Double TotalPrice;
-   private String status;
    private Date check_in_date;
    private Date check_out_date;
 
-    public Booking(int Revervation_ID, int customerID, String room_code, Double TotalPrice, String status, Date check_in_date, Date check_out_date) {
+    public Booking(int Revervation_ID, int customerID, String room_code, Double TotalPrice, Date check_in_date, Date check_out_date) {
         this.Revervation_ID = Revervation_ID;
         this.customerID = customerID;
         this.room_code = room_code;
         this.TotalPrice = TotalPrice;
-        this.status = status;
         this.check_in_date = check_in_date;
         this.check_out_date = check_out_date;
     }
+
+    
 
     public int getRevervation_ID() {
         return Revervation_ID;
@@ -61,14 +61,7 @@ public class Booking {
         this.TotalPrice = TotalPrice;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
+  
     public Date getCheck_in_date() {
         return check_in_date;
     }

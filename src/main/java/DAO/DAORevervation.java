@@ -28,10 +28,9 @@ public class DAORevervation extends DBContext{
                         rs.getInt(1),
                         rs.getInt(2),
                         rs.getString(3),
-                        rs.getDouble(4),
-                        rs.getString(5),
-                        rs.getDate(6),
-                        rs.getDate(7)
+                        rs.getDouble(4),           
+                        rs.getDate(5),
+                        rs.getDate(6)
                         
                 );
                 bList.add(boo);
@@ -44,14 +43,14 @@ public class DAORevervation extends DBContext{
     }
     
       public boolean Insert(Booking booking) {  //them don dat phong
-        String query = "insert into Reservation( Reservation_ID,Customer_ID,Room_Code,TotalPrice,Status,Check_In_Date,CheckOutDate) values (?,?,?,?,?,?,?)";
+        String query = "insert into Reservation( Reservation_ID,Customer_ID,Room_Code,TotalPrice,Check_In_Date,CheckOutDate) values (?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, booking.getRevervation_ID());
             ps.setInt(2, booking.getCustomerID());
             ps.setString(3,booking.getRoom_code());
             ps.setDouble(4,booking.getTotalPrice());
-            ps.setString(5, booking.getStatus());
+          
             ps.setDate(6, booking.getCheck_in_date());
             ps.setDate(7, booking.getCheck_out_date());
 
@@ -77,19 +76,19 @@ public class DAORevervation extends DBContext{
         return false; 
     } 
        
-    public boolean UpdateReverveseStatus(Booking booking) { //cancelROOM
-        String query = " update Reservation set Status = ? where Reservation_ID=?";
-        try {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString(1, booking.getStatus());
-            ps.setInt(2, booking.getRevervation_ID());
-            int result = ps.executeUpdate();
-            return result > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+//    public boolean UpdateReverveseStatus(Booking booking) { //cancelROOM
+//        String query = " update Reservation set Status = ? where Reservation_ID=?";
+//        try {
+//            PreparedStatement ps = connection.prepareStatement(query);
+//            ps.setString(1, booking.getStatus());
+//            ps.setInt(2, booking.getRevervation_ID());
+//            int result = ps.executeUpdate();
+//            return result > 0;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
     public boolean UpdateRevervesePrince(Booking booking) {  //update gia ca cua don
         String query = " update Reservation set TotalPrice = ? where Reservation_ID=?";
         try {
