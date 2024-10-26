@@ -124,6 +124,7 @@ public class routerFilter implements Filter {
 
       
         if (url.equals("/booking.jsp") && !isLog) {
+            req.setAttribute("loginMessage", "You must login first.");
             res.sendRedirect("index.jsp");
             return;
         }

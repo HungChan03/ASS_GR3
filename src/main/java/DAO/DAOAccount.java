@@ -6,6 +6,7 @@ package DAO;
 
 import Model.User;
 import Utils.DBContext;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,13 +30,13 @@ public class DAOAccount extends DBContext{
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                User us = new User(
-                        rs.getInt(1),
+                        
+                        rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getString(6),
-                        rs.getDate(7)
+                        rs.getDate(6)
                         
                 );
                 uList.add(us);
@@ -102,25 +103,7 @@ public class DAOAccount extends DBContext{
         return false; 
 }
      
-        public boolean updateByID(User user) { //sua thong tin dua tren ID
-        String query = " update Customers set Customer_Name=? , Address= ?, PhoneNumber =?, Email = ?, Password=? , Age =? WHERE Customer_ID= ?;";
-        try {
-            PreparedStatement ps = connection.prepareStatement(query);
-             ps.setInt(7, user.getId());
-            ps.setString(1, user.getCustomerName());
-            ps.setString(2, user.getAddress());
-            ps.setString(3, user.getPhoneNumber());
-            ps.setString(4, user.getEmail());
-            ps.setString(5, user.getPassword());
-            ps.setDate(6, user.getBirthday());
-           
-             int result = ps.executeUpdate();
-            return result > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+  
         
           public boolean GetUserByID(User user) {  //lay thong tin User dua trn ID
         String query = "Select * from Customer where Customer_ID=?";
@@ -155,6 +138,47 @@ public class DAOAccount extends DBContext{
             e.printStackTrace();
         }
         return false; 
+    }
+        
+          public User GetUserByEmail(String email) {
+        String query = "SELECT * FROM Customers WHERE Email = ?";
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+                String customerName = rs.getString("Customer_Name");
+                String address = rs.getString("Address");
+                String phoneNumber = rs.getString("PhoneNumber");
+                String password = rs.getString("Password");
+                Date birthday = rs.getDate("Birthday");
+                
+                return new User( customerName, address, phoneNumber, email, password, birthday);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+   
+    public boolean updateByEmail(User user) {
+        String query = "UPDATE Customers SET Customer_Name = ?, Address = ?, PhoneNumber = ?, Password = ?, Birthday = ? WHERE Email = ?";
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, user.getCustomerName());
+            ps.setString(2, user.getAddress());
+            ps.setString(3, user.getPhoneNumber());
+            ps.setString(4, user.getPassword());
+            ps.setDate(5, user.getBirthday());
+            ps.setString(6, user.getEmail());
+           
+            int result = ps.executeUpdate();
+            return result > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
      
 }

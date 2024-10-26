@@ -1,107 +1,108 @@
-<%@page import="jakarta.servlet.http.Cookie"%>
+    <%@page import="jakarta.servlet.http.Cookie"%>
 <%@page import="jakarta.servlet.http.HttpServletRequest"%>
 <%@page import="Model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Profile</title>
+    <title>Your Profile</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+       
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             height: 100vh;
+            background-color: #f4f4f9;
         }
-        
+
         .container {
-            background-color: white;
-            padding: 20px;
+            background-color: #ffffff;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-        
-        h2 {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+        }
+
+        h2 {
             margin-bottom: 20px;
             color: #333;
+            font-size: 24px;
         }
-        
+
         label {
-            font-weight: bold;
-            margin-top: 10px;
             display: block;
+            margin: 15px 0 5px;
             color: #555;
+            font-size: 14px;
         }
-        
-        input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="date"] {
             width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            box-sizing: border-box;
+            font-size: 16px;
         }
 
         input[type="submit"] {
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px 20px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 15px;
         }
 
         input[type="submit"]:hover {
             background-color: #45a049;
         }
-        
-        .errorMessage {
-            color: red;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
 
-
-
 <div class="container">
     <h2>Edit Profile</h2>
     
-<form action="update" method="post">
-      <label for="Id">Enter your ID:</label>
-    <input type="text" name="id" value="${user.id}"> <!-- Hidden field for user ID -->
+    <form action="update" method="post">
+        <label for="customerName">New Name:</label>  
+        <input type="text" id="customerName" name="customerName" required>
 
-    <label for="customerName">Name:</label>
-    <input type="text" id="customerName" name="customerName" required>
+        <label for="address">New Address:</label>
+        <input type="text" id="address" name="address" required>
 
-    <label for="address">Address:</label>
-    <input type="text" id="address" name="address" required>
+        <label for="phoneNumber">New Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
 
-    <label for="phoneNumber">Phone Number:</label>
-    <input type="text" id="phoneNumber" name="phoneNumber" required>
+        <label for="password">New Password or Old Pass:</label>
+        <input type="password" id="password" name="password" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+        <label for="birthday">Enter your new birthday:</label>
+        <input type="date" id="birthday" name="birthday" required>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+        <label for="email">Your Email(you must enter your email):</label>
+        <input type="email" id="email" name="email" required>
 
-    <label for="age">Age:</label>
-    <input type="number" id="age" name="age" required>
-
-    <input type="submit" value="Update">
-</form>
+        <input type="submit" value="Update">
+    </form>
 </div>
 
 </body>

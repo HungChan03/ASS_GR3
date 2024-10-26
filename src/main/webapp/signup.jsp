@@ -38,7 +38,7 @@
             <input name ="password" type="password" placeholder="Password" id="password" required>
             
             <label for="birthday">Enter Your Birthday(YYYY-MM-DD)</label>
-            <input name ="birthday" type="birthday" placeholder="Birthday" id="birthday" required>
+            <input name ="birthday" type="date" placeholder="Birthday" id="birthday" required>
             
           
 

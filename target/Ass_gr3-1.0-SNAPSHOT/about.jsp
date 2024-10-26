@@ -122,7 +122,7 @@
                                     <%
                         if (username != null) {
                         %>
-                            
+                             <a href="personal.jsp" class="nav-item nav-link">Update Your Info</a>
                             <span class="nav-item nav-link text-white">Welcome, <%= username %></span>
                             <a href="logout.jsp" class="nav-item nav-link">Logout</a>
                         <%

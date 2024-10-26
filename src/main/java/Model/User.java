@@ -29,7 +29,7 @@ public class User {
         this.birthday = birthday;
     }
 
-    public User(int id, String customerName, String address, String phoneNumber, String email, String password, Date birthday) {
+    public User(int id, String customerName, String address, String phoneNumber, String email, Date birthday) {
         this.id = id;
         this.customerName = customerName;
         this.address = address;
@@ -37,6 +37,15 @@ public class User {
         this.email = email;
         this.password = password;
         this.birthday = birthday;
+    }
+    
+     public User(String customerName, String address, String phoneNumber,String password, Date birthday,String email) {
+        this.customerName = customerName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.birthday = birthday;
+        this.email = email;
     }
 
     public int getId() {

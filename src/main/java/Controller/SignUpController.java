@@ -35,9 +35,10 @@ public class SignUpController extends HttpServlet {
     String fullname = request.getParameter("fullname");
     String address = request.getParameter("address");
     String phone = request.getParameter("phone");
-    String email = request.getParameter("email");
+    
     String password = request.getParameter("password");   
     String birthdayString = request.getParameter("birthday");
+    String email = request.getParameter("email");
     Date birthday = null;
     try {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

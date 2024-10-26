@@ -22,7 +22,7 @@
             <h3>Login Here</h3>
       
             <p class="text-danger alert"> ${mess}</p>
-            <label for="username">Username</label>
+            <label for="username">Email</label>
             <input type="text" placeholder="Enter Email" id="username" name="user" required="">
 
             <label for="password">Password</label>
